@@ -10,7 +10,7 @@ class StringCalculator {
 		} else {
 			for (String number : arr) {
 				if (!number.trim().isEmpty()) {
-					sum = sum + Integer.parseInt(number);
+					sum = sum + Integer.parseInt(number);		// If it is not a number,parseInt() will throw an exception.
 				}
 			}
 		}

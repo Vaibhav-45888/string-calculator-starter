@@ -28,4 +28,10 @@ class StringCalculatorShould {
 			StringCalculator.add("1,2,3");
 		});
 	}
+	@Test
+	public final void whenNon_NumberIsUsed() {
+		assertThrows(RuntimeException.class, () -> {
+			StringCalculator.add("1,x");
+		});
+	}
 }
