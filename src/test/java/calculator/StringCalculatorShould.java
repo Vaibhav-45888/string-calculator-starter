@@ -86,5 +86,8 @@ class StringCalculatorShould {
 	public void whenMultipleDelimetersArePresent() {
 		Assertions.assertEquals(6, StringCalculator.add("//[*][%]\n1*2%3"));
 	}
-
+	@Test
+	public void mulCustomDelWithAnyLength() throws Exception {
+		Assertions.assertEquals(6, StringCalculator.add("//[**][%%]\n1**2%%3"));
+	}
 }
