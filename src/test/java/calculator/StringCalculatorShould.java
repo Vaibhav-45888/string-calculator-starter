@@ -22,16 +22,23 @@ class StringCalculatorShould {
 		Assertions.assertEquals(1 + 2, StringCalculator.add("1,2"));
 	}
 	
-	@Test
-	public final void whenNumberIsGreaterThanTwo() {
-		assertThrows(RuntimeException.class, () -> {
-			StringCalculator.add("1,2,3");
-		});
-	}
+//	@Test
+//	public final void whenNumberIsGreaterThanTwo() {
+//		assertThrows(RuntimeException.class, () -> {
+//			StringCalculator.add("1,2,3");
+//		});
+//	}
+	
 	@Test
 	public final void whenNon_NumberIsUsed() {
 		assertThrows(RuntimeException.class, () -> {
 			StringCalculator.add("1,x");
 		});
 	}
+	
+	@Test
+	public final void whenMultipleNumbersAreToBeAdded() {
+		Assertions.assertEquals(1+2+3+4+5,StringCalculator.add("1,2,3,4,5"));	
+	}
+	
 }
