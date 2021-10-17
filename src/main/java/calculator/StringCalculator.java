@@ -20,8 +20,9 @@ class StringCalculator {
 					int numberInt =  Integer.parseInt(number.trim());		// If it is not a number,parseInt() will throw an exception.
 					if(numberInt<0) {
 						negativeNumbers.add(numberInt);
+					}else if(numberInt<=1000) {
+						sum = sum + numberInt;
 					}
-					sum = sum + numberInt;
 				}
 			}
 //	}
@@ -39,8 +40,7 @@ class StringCalculator {
 			delimeter = numbers.substring(delimeterIndex, delimeterIndex+1);
 			numbersWithoutDelimeters = numbers.substring(numbers.indexOf("\n")+1);
 		}
-		return add(numbersWithoutDelimeters,delimeter);
-		
+		return add(numbersWithoutDelimeters,delimeter);	
 	}
 	
 }

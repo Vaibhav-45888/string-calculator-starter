@@ -68,4 +68,8 @@ class StringCalculatorShould {
 		});
 	}
 	
+	public final void whenNumbersAreGreaterThanThousandItShouldBeIgnored() {
+		Assertions.assertEquals(2+1000+400, StringCalculator.add("2,1000,400,1234"));
+	}
+	
 }
