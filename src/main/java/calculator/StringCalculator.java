@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class StringCalculator {
+	static int count = 0;
 
 	public static int add(String numbers,String delimeter) {
 		int sum = 0;
@@ -40,7 +41,13 @@ class StringCalculator {
 			delimeter = numbers.substring(delimeterIndex, delimeterIndex+1);
 			numbersWithoutDelimeters = numbers.substring(numbers.indexOf("\n")+1);
 		}
+		count++;
 		return add(numbersWithoutDelimeters,delimeter);	
+	}
+	
+	
+	public static int getCalledCount() {
+		return count;		
 	}
 	
 }

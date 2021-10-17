@@ -67,9 +67,14 @@ class StringCalculatorShould {
 			StringCalculator.add("1,2,-3,4,-5,6");
 		});
 	}
-	
+	@Test
 	public final void whenNumbersAreGreaterThanThousandItShouldBeIgnored() {
 		Assertions.assertEquals(2+1000+400, StringCalculator.add("2,1000,400,1234"));
+	}
+	
+	@Test
+	public final void countAddMethod(){
+		Assertions.assertEquals(StringCalculator.getCalledCount(), StringCalculator.count);
 	}
 	
 }
