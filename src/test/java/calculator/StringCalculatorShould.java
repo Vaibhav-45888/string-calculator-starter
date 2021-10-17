@@ -41,4 +41,9 @@ class StringCalculatorShould {
 		Assertions.assertEquals(1+2+3+4+5,StringCalculator.add("1,2,3,4,5"));	
 	}
 	
+	@Test
+	public final void whenNewLineIsPresentBetweenNumbers() {
+		Assertions.assertEquals(1+2+3, StringCalculator.add("1\n2,3"));
+	}
+
 }
