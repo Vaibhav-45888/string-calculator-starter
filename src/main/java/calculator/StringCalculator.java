@@ -5,6 +5,7 @@ class StringCalculator {
 	public static int add(String numbers,String delimeter) {
 		int sum = 0;
 		String[] arr = numbers.split(delimeter);	
+		int negativeNumber=0;
 		
 //		if (arr.length > 2) {
 //			throw new RuntimeException("Only Two Numbers are allowed.");
@@ -12,10 +13,17 @@ class StringCalculator {
 		
 			for (String number : arr) {
 				if (!number.trim().isEmpty()) {
-					sum = sum + Integer.parseInt(number.trim());		// If it is not a number,parseInt() will throw an exception.
+					int numberInt =  Integer.parseInt(number.trim());		// If it is not a number,parseInt() will throw an exception.
+					if(numberInt<0) {
+						negativeNumber = numberInt;
+					}
+					sum = sum + numberInt;
 				}
 			}
 //	}
+		if(negativeNumber<0) {
+			throw new RuntimeException("Negatives not allowed : "+negativeNumber);
+		}
 		return sum;
 	}
 	

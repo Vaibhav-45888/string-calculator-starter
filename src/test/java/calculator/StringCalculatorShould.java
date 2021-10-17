@@ -50,5 +50,13 @@ class StringCalculatorShould {
 	public final void whenThereAreDifferentDelimetersPresent() {
 		Assertions.assertEquals(3, StringCalculator.add("//;\n1;2"));
 	}
+	
+	@Test
+	public final void whenThereIsOneNegativeNumber () {
+		assertThrows(RuntimeException.class, () -> {
+			StringCalculator.add("1,2,-3,4,5");
+		});
+	}
+	
 
 }
