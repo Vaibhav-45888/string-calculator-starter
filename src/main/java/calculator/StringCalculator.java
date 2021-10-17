@@ -1,11 +1,15 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class StringCalculator {
 
 	public static int add(String numbers,String delimeter) {
 		int sum = 0;
 		String[] arr = numbers.split(delimeter);	
-		int negativeNumber=0;
+//		int negativeNumber=0;
+		List<Integer> negativeNumbers = new ArrayList<>();
 		
 //		if (arr.length > 2) {
 //			throw new RuntimeException("Only Two Numbers are allowed.");
@@ -15,14 +19,14 @@ class StringCalculator {
 				if (!number.trim().isEmpty()) {
 					int numberInt =  Integer.parseInt(number.trim());		// If it is not a number,parseInt() will throw an exception.
 					if(numberInt<0) {
-						negativeNumber = numberInt;
+						negativeNumbers.add(numberInt);
 					}
 					sum = sum + numberInt;
 				}
 			}
 //	}
-		if(negativeNumber<0) {
-			throw new RuntimeException("Negatives not allowed : "+negativeNumber);
+		if(negativeNumbers.size()>0) {
+			throw new RuntimeException("Negatives not allowed : "+negativeNumbers.toString());
 		}
 		return sum;
 	}

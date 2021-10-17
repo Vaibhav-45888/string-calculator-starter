@@ -2,6 +2,7 @@ package calculator;
 
 import static org.junit.Assert.assertThrows;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -46,10 +47,12 @@ class StringCalculatorShould {
 		Assertions.assertEquals(1+2+3, StringCalculator.add("1\n2,3"));
 	}
 	
+	
 	@Test
 	public final void whenThereAreDifferentDelimetersPresent() {
 		Assertions.assertEquals(3, StringCalculator.add("//;\n1;2"));
 	}
+	
 	
 	@Test
 	public final void whenThereIsOneNegativeNumber () {
@@ -58,5 +61,11 @@ class StringCalculatorShould {
 		});
 	}
 	
-
+	@Test
+	public final void whenMultipleNegativeNumbersArePresent() {
+		assertThrows(RuntimeException.class, () -> {
+			StringCalculator.add("1,2,-3,4,-5,6");
+		});
+	}
+	
 }
