@@ -2,6 +2,8 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class StringCalculator {
 	static int count = 0;
@@ -36,6 +38,9 @@ class StringCalculator {
 	public static int add(String numbers) {
 		String delimeter = ",|\n";
 		String numbersWithoutDelimeters = numbers;
+		if(numbers.startsWith("//[")) {
+			return multipleDelimeterWithAnyLength(numbers);
+		}
 		if(numbers.startsWith("//")) {
 			int delimeterIndex = numbers.indexOf("//")+2;
 			delimeter = numbers.substring(delimeterIndex, delimeterIndex+1);
@@ -46,6 +51,26 @@ class StringCalculator {
 	}
 	
 	
+	public static int multipleDelimeterWithAnyLength(String numbers) {
+		Matcher match = Pattern.compile("//(\\[.+\\])+\n(.*)").matcher(numbers);
+		match.matches();
+		String delim = match.group(1);
+		String delimeters = new String();
+		
+		int index = delim.length(),last = 0;
+		for(int i =0;i<index;i++) {
+			if(delim.charAt(i) == ']' && i!=index-1) {
+				delimeters = delimeters + delim.substring(last, i);
+				delimeters = delimeters + "]|";
+				last = i+1;
+			}else if(i==index-1)
+				delimeters = delimeters + delim.substring(last, i);
+		}
+		
+		String n = match.group(2);
+		return n.split(delimeters);
+	}
+
 	public static int getCalledCount() {
 		return count;		
 	}

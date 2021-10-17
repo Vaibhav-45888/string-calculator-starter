@@ -77,4 +77,14 @@ class StringCalculatorShould {
 		Assertions.assertEquals(StringCalculator.getCalledCount(), StringCalculator.count);
 	}
 	
+	@Test
+	public void whenDelimeterCanBeOfAnyLength() {
+		Assertions.assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
+	}
+	
+	@Test
+	public void whenMultipleDelimetersArePresent() {
+		Assertions.assertEquals(6, StringCalculator.add("//[*][%]\n1*2%3"));
+	}
+
 }
