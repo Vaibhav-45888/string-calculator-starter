@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 class StringCalculator {
 	static int count = 0;
-
+	
+	
 	public static int add(String numbers,String delimeter) {
 		int sum = 0;
 		String[] arr = numbers.split(delimeter);	
@@ -35,12 +36,31 @@ class StringCalculator {
 		return sum;
 	}
 	
+	//Assement
 	public static int add(String numbers) {
 		String delimeter = ",|\n";
 		String numbersWithoutDelimeters = numbers;
 		if(numbers.startsWith("//[")) {
 			return multipleDelimeterWithAnyLength(numbers);
 		}
+		
+		if(numbers.charAt(0)=='A' && numbers.length()==1) {
+			return Integer.parseInt(numbers);
+			}
+				String[] str = numbers.split(",");
+				if(numbers.charAt(0)=='A') {
+					int sum=0;
+					for(int i=1;i<str.length;i+=2) {
+						sum=sum+Integer.parseInt(str[i]);
+					}
+					return sum;
+				}
+				
+				
+			
+			
+			
+		
 		if(numbers.startsWith("//")) {
 			int delimeterIndex = numbers.indexOf("//")+2;
 			delimeter = numbers.substring(delimeterIndex, delimeterIndex+1);
@@ -73,6 +93,5 @@ class StringCalculator {
 
 	public static int getCalledCount() {
 		return count;		
-	}
-	
+	}	
 }

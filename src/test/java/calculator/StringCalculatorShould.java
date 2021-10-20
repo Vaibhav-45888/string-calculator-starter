@@ -1,6 +1,7 @@
 package calculator;
 
 import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -61,6 +62,11 @@ class StringCalculatorShould {
 		});
 	}
 	
+	//Assesment
+@Test
+	public final void alternate() {
+		Assertions.assertEquals(4, StringCalculator.add("A,1,2,3,4"));
+	}
 	@Test
 	public final void whenMultipleNegativeNumbersArePresent() {
 		assertThrows(RuntimeException.class, () -> {
